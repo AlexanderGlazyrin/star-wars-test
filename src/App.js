@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {Col, Row} from 'antd';
+import FilmsList from './components/FilmsList';
+import AddCommentForm from './components/AddCommentForm';
 import './App.css';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Row>
+        <Col span={16} offset={4} className='container'>
+          <Switch>
+            <Route path='/film/:id' exact>
+              <AddCommentForm/>
+            </Route>
+            <Route path='/' exact>
+              <FilmsList/>
+            </Route>
+          </Switch>
+        </Col>
+      </Row>
+    </BrowserRouter>
   );
 }
 
